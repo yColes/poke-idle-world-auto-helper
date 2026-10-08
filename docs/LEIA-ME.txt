@@ -1,0 +1,53 @@
+Poke Idle World - Auto Helper v1.4.0
+====================================
+
+NOVIDADES DA v1.4
+
+1) GERENCIADOR AUTOMÁTICO DE POKÉBOLAS
+- Tenta identificar o tipo de Pokébola selecionado dentro da janela CAPTURA.
+- Lê o estoque quando o contador está exposto pelo DOM do jogo.
+- Se a Pokébola selecionada chegar a 0, tenta abrir o seletor e trocar para a próxima com estoque.
+- Prioridade padrão preserva as melhores: Poké Ball -> Great Ball -> Ultra Ball -> outras -> Master Ball por último.
+- O modo é conservador: não clica em elementos fora da janela CAPTURA e não troca se não conseguir identificar o estoque com segurança.
+
+2) ALERTA DE ESTOQUE
+- Por padrão avisa quando restarem 20 Pokébolas da selecionada.
+- O limite pode ser alterado no popup da extensão.
+- Mostra aviso dentro do jogo e também uma notificação do Opera/Chromium.
+- Quando a selecionada zera e nenhuma alternativa com estoque é encontrada, mostra um alerta de falta de Pokébolas.
+
+3) HUD ARRASTÁVEL
+- Segure e arraste o título "AUTO HELPER v1.4" para mover o HUD para qualquer ponto da tela.
+- A posição fica salva mesmo depois de recarregar o jogo.
+- Dê duplo clique no título para restaurar a posição padrão no canto direito.
+- Somente a barra de título captura o mouse; o restante do HUD não bloqueia cliques no jogo.
+
+MODO ULTRA LEVE
+- A extensão encontra a janela "CAPTURA" e guarda uma referência direta a ela.
+- A verificação rápida procura "Lançar" apenas dentro dessa janela.
+- O gerenciador de Pokébolas também trabalha dentro da janela CAPTURA, aproximadamente a cada 900 ms.
+- A página inteira só é redescoberta em baixa frequência se a janela CAPTURA for recriada.
+- Reconexão e pop-ups continuam em scanner separado e lento.
+
+LIGA/DESLIGA RÁPIDO
+- Botão AUTO ON / AUTO OFF dentro do jogo.
+- Botão Pausar tudo / Ativar tudo no popup.
+- Atalho padrão: Alt + Shift + P.
+- Badge ON/OFF no ícone da extensão.
+
+ATUALIZAR SEM PERDER HISTÓRICO
+- Para preservar histórico e configurações, substitua os arquivos da MESMA pasta da extensão anterior pelos da v1.4.
+- Abra opera://extensions e clique em "Atualizar".
+- Recarregue a aba do jogo.
+
+INSTALAÇÃO NOVA
+1. Extraia a pasta para um local permanente.
+2. Abra opera://extensions.
+3. Ative "Modo do desenvolvedor".
+4. Clique em "Carregar sem compactação" e selecione a pasta poke-idle-auto-helper-v1.4.0.
+5. Abra/recarregue https://poke.idleworld.online/play
+
+OBSERVAÇÃO SOBRE A TROCA DE BOLAS
+Sites podem mudar os nomes/classes internas sem aviso. A v1.4 reconhece nomes comuns como Poké Ball, Great Ball, Ultra Ball, Master Ball e várias outras. Se o painel mostrar "Não detectada" mesmo com a janela CAPTURA aberta, envie o HTML do seletor de Pokébola (Inspecionar -> Copy outerHTML) e o detector pode ser ajustado exatamente ao site.
+
+A aba deve continuar carregada. Fechar o navegador ou suspender o computador interrompe a execução da página.
