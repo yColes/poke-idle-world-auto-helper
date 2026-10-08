@@ -1,0 +1,36 @@
+name: Import extension source
+on:
+  push:
+    paths:
+      - 'source-archive.b64'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    if: github.actor == 'yColes' || github.actor == 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Recover original extension source
+        run: |
+          set -euo pipefail
+          base64 -d source-archive.b64 | tar -xJf -
+          mkdir -p dist
+          if [ -f manifest.json ]; then
+            VERSION=$(python3 -c 'import json;print(json.load(open("manifest.json"))["version"])')
+            EXT_NAME=$(basename "$GITHUB_REPOSITORY")
+            ( zip -q -r "dist/${EXT_NAME}-v${VERSION}.zip" manifest.json background.js capture*.js content.js popup.html popup.css popup.js icons/ )
+          fi
+          rm -f source-archive.b64
+      - name: Publish extension files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "feat: publish full extension source and installable ZIP"
+            git push
+          fi
