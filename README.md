@@ -6,10 +6,6 @@
 ![Manifest](https://img.shields.io/badge/Chrome-Manifest%20V3-4285F4)
 ![Navegadores](https://img.shields.io/badge/Opera%20GX%20%7C%20Chrome%20%7C%20Edge-compatível-8A2BE2)
 
-<p align="center">
-  <img src="docs/screenshots/game.png" alt="Poke Idle World" width="900">
-</p>
-
 ## ✨ O que a extensão faz
 
 O Auto Helper observa apenas as partes relevantes da interface do jogo e automatiza o fluxo de captura sem precisar manter a aba em primeiro plano.
