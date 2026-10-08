@@ -1,0 +1,53 @@
+{
+  "manifest_version": 3,
+  "name": "Poke Idle World - Auto Helper",
+  "version": "1.4.0",
+  "description": "Auto captura otimizada, histórico, gerenciador automático de Pokébolas, alertas de estoque e HUD arrastável.",
+  "permissions": [
+    "storage",
+    "tabs",
+    "notifications"
+  ],
+  "host_permissions": [
+    "https://poke.idleworld.online/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-helper": {
+      "suggested_key": {
+        "default": "Alt+Shift+P"
+      },
+      "description": "Ativar ou pausar o Auto Helper"
+    }
+  },
+  "action": {
+    "default_title": "Poke Idle Auto Helper",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://poke.idleworld.online/*"
+      ],
+      "js": [
+        "capture-parser.js",
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}
